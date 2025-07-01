@@ -28,7 +28,6 @@ try {
 	let services = json["services"];
 	const network = json["network"] ?? "mini_default";
 
-
 	if (!services || Object.keys(services).length === 0) {
 		throw new Error("No services found in compose.json");
 	}
@@ -48,12 +47,10 @@ try {
 			process.exit(1);
 	}
 
-
 } catch (err) {
 	console.error(err);
 
 }
-
 
 function sortServicesByDependencies(services) {
 	const graph = new Map();
@@ -87,7 +84,7 @@ function sortServicesByDependencies(services) {
 
 function upContainers(services, network) {
 	try {
-		console.log(`▶️ docker network create ${network}`);
+		console.log(`docker network create ${network}`);
 		child_process.execSync(`docker network create ${network}`, {stdio: 'inherit'});
 	} catch (e) {
 		console.warn(`Network ${network} may already exist`);
@@ -98,7 +95,7 @@ function upContainers(services, network) {
 			const contextPath = path.resolve(process.cwd(), service.build); // абсолютний шлях
 			const dockerfilePath = path.join(contextPath, '.Dockerfile');
 			const buildCommand = `docker build -f ${dockerfilePath} -t ${name} ${contextPath}`;
-			console.log(`▶️ ${buildCommand}`);
+			console.log(`${buildCommand}`);
 			child_process.execSync(buildCommand, {stdio: 'inherit'});
 		}
 
