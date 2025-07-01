@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  redis:
+    build:
+      context: .././http-redis
+      dockerfile: .Dockerfile
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    networks:
+      internal:
+    environment:
+      PORT: "3000"
+
+  kv:
+    build:
+      context: .././kv-proxy
+      dockerfile: .Dockerfile
+    ports:
+      - "4000:4000"
+    networks:
+      internal:
+    depends_on:
+      - redis
+    environment:
+      REDIS_URL: http://redis:3000
+      PORT: "4000"
+
+    volumes:
+      - ./kv-proxy/src:/app/src
+
+networks:
+  internal:

@@ -1,0 +1,30 @@
+{
+  "network": "internal",
+  "services": {
+    "kv": {
+      "build": ".././kv-proxy",
+      "depends_on": [
+        "redis"
+      ],
+      "ports": {
+        "4000": "4000"
+      },
+      "volumes": {
+        "./kv-server/src": "/usr/src/app/src"
+      },
+      "env": {
+        "REDIS_URL": "http://redis:3000",
+        "PORT": "4000"
+      }
+    },
+    "redis": {
+      "build": ".././http-redis",
+      "ports": {
+        "3000": "3000"
+      },
+      "env": {
+        "PORT": "3000"
+      }
+    }
+  }
+}

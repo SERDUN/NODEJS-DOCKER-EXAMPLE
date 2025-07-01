@@ -1,0 +1,11 @@
+### Set key via proxy
+POST http://localhost:4000/kv
+Content-Type: application/json
+
+{
+  "key": "test",
+  "value": "123"
+}
+
+### Get key via proxy
+GET http://localhost:4000/kv/test

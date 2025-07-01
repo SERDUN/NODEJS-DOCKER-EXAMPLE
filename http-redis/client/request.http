@@ -1,0 +1,11 @@
+### Set key-value
+POST http://localhost:3000/set
+Content-Type: application/json
+
+{
+  "key": "foo",
+  "value": "bar"
+}
+
+### Get key
+GET http://localhost:3000/get?key=foo
