@@ -17,7 +17,7 @@ services:
   kv:
     build:
       context: ../kv-proxy
-      dockerfile: .Dockerfile
+      dockerfile: .dev.Dockerfile
     ports:
       - "4000:4000"
     networks:
@@ -30,5 +30,6 @@ services:
 
     volumes:
       - ../kv-proxy/src:/app/src
+
 networks:
   internal:

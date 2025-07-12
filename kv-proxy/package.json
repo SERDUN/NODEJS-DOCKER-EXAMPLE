@@ -5,6 +5,7 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
+    "dev": "nodemon",
     "build": "tsc"
   },
   "dependencies": {
@@ -17,6 +18,9 @@
     "@eslint/markdown": "^6.5.0",
     "@types/dotenv": "^6.1.1",
     "@types/express": "^5.0.3",
+    "nodemon": "^3.1.10",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.35.0"
   },
