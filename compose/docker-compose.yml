@@ -3,7 +3,7 @@ version: '3.8'
 services:
   redis:
     build:
-      context: .././http-redis
+      context: ../http-redis
       dockerfile: .Dockerfile
     ports:
       - "3000:3000"
@@ -16,7 +16,7 @@ services:
 
   kv:
     build:
-      context: .././kv-proxy
+      context: ../kv-proxy
       dockerfile: .Dockerfile
     ports:
       - "4000:4000"
